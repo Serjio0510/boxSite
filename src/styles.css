@@ -174,3 +174,49 @@ body {
   #result strong {
     font-size: 20px; /* Увеличенный размер для выделения */
   }
+
+  /* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .sidebar, .content {
+    width: 100%;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .sidebar {
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  input, select {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .steps {
+    justify-content: space-between;
+  }
+
+  .step {
+    width: 30px;
+    height: 30px;
+  }
+}

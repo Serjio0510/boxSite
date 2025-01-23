@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultDiv = document.getElementById("result");
     const steps = document.querySelectorAll(".step");
     let selectedBox = null; // Текущий выбранный тип изделия
-  
+    const results = {}; // Сохраняем результаты для каждого каталога
+
     // Логика выбора типа изделия
     links.forEach((link) => {
       link.addEventListener("click", function (event) {
@@ -15,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedBox = this.textContent; // Запоминаем выбранный тип
         boxTypeDisplay.textContent = `Вы выбрали тип изделия: ${selectedBox}`;
         document.querySelector(".sidebar").appendChild(boxTypeDisplay);
-        resultDiv.innerHTML = ""; // Очищаем результат
+        resultDiv.innerHTML = results[selectedBox]
+        ? `<p>Последний результат для ${selectedBox}: <strong>${results[selectedBox]}</strong></p>`
+        : `<p>Результат для ${selectedBox} пока отсутствует.</p>`;
       });
     });
   
@@ -72,23 +75,26 @@ document.addEventListener("DOMContentLoaded", function () {
       //
       let result = 0;
       if (selectedBox === "У32") {
-        result = (otvet); // логика всей программы
+        result = (TorcevayaStenka, BokovayaStenka, Dno, Krushka, otvet); // логика всей программы
       } else if (selectedBox === "УТ56") {
-        result = (length+width+height); // Вычитание
+        result = (length - width - height); // Вычитание
       } else if (selectedBox === "УТ61") {
-        result = length - width - height; // Вычитание
+        result = length + width + height; // Сложение
       } else {
         alert("Выберите тип изделия!");
         return;
       }
+
+      // Сохраняем результат
+      results[selectedBox] = result.toFixed(2);
   
       // Показываем результат
       resultDiv.innerHTML = `<strong>Результат вычислений для ${selectedBox}:</strong>
-      Дно ящика: <strong>${Dno.toFixed(3)}</strong>;
-      Боковая стенка ящика: <strong>${BokovayaStenka.toFixed(3)}</strong>;
-      Торцевая стенка ящика: <strong>${TorcevayaStenka.toFixed(3)}</strong>;
-      Крышка ящика: <strong>${Krushka.toFixed(3)}</strong>;
-      Общий результат: <strong>${result.toFixed(3)}</strong>;`;
+      Дно ящика: <strong>${Dno.toFixed(0)}</strong>;
+      Боковая стенка ящика: <strong>${BokovayaStenka.toFixed(0)}</strong>;
+      Торцевая стенка ящика: <strong>${TorcevayaStenka.toFixed(0)}</strong>;
+      Крышка ящика: <strong>${Krushka.toFixed(0)}</strong>;
+      Общий результат: <strong>${result.toFixed(0)}</strong>;`;
   
       // Меняем цвет шагов: первый шаг становится неактивным, второй активным
       steps[0].style.backgroundColor = "#D3D3D3";
