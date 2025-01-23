@@ -37,17 +37,16 @@ document.addEventListener("DOMContentLoaded", function () {
       resultDiv.innerHTML = "";
   
       // Вычисляем результат в зависимости от типа изделия
-      // У24
+      // У32
       const plotnostFanery = 650;
       const plotnostDereva = 540;
       const O6 = 0.018;
-      const ColichestvoBrusa = 6;
       const ColichestvoSten = 2;
       const tolshchinaSten = 0.009;
       // Дно ящика
       const fanera1 = plotnostFanery*(length/1000)*(width/1000)*O6*1;
       const doska1 = 0;
-      const brus1 = plotnostDereva*1*0.1*0.1*ColichestvoBrusa;
+      const brus1 = (plotnostDereva*(length/1000)*0.1*0.1*3)+(plotnostDereva*(width/1000)*0.1*0.1*3);
       const Dno = fanera1 + doska1 + brus1;
       // Стенка Боковая
       const fanera2 = plotnostFanery*((height/1000)+0.118)*(length/1000)*tolshchinaSten*1;
@@ -75,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (selectedBox === "У32") {
         result = (otvet); // логика всей программы
       } else if (selectedBox === "УТ56") {
-        result = length - width - height; // Вычитание
+        result = (length+width+height); // Вычитание
       } else if (selectedBox === "УТ61") {
         result = length - width - height; // Вычитание
       } else {
@@ -85,11 +84,11 @@ document.addEventListener("DOMContentLoaded", function () {
   
       // Показываем результат
       resultDiv.innerHTML = `<strong>Результат вычислений для ${selectedBox}:</strong>
-      Крышка ящика: <strong>${Krushka.toFixed(0)}</strong>;
-      Дно ящика: <strong>${Dno.toFixed(0)}</strong>;
-      Боковая стенка ящика: <strong>${BokovayaStenka.toFixed(0)}</strong>;
-      Торцевая стенка ящика: <strong>${TorcevayaStenka.toFixed(0)}</strong>;
-      Общий результат: <strong>${result.toFixed(0)}</strong>;`;
+      Дно ящика: <strong>${Dno.toFixed(3)}</strong>;
+      Боковая стенка ящика: <strong>${BokovayaStenka.toFixed(3)}</strong>;
+      Торцевая стенка ящика: <strong>${TorcevayaStenka.toFixed(3)}</strong>;
+      Крышка ящика: <strong>${Krushka.toFixed(3)}</strong>;
+      Общий результат: <strong>${result.toFixed(3)}</strong>;`;
   
       // Меняем цвет шагов: первый шаг становится неактивным, второй активным
       steps[0].style.backgroundColor = "#D3D3D3";
