@@ -1,0 +1,20 @@
+{
+    "name": "Калькулятор ящиков",
+    "short_name": "Калькулятор ящиков",
+    "start_url": "/boxSite/",
+    "display": "standalone",
+    "background_color" : "#4a3429",
+    "icons": [
+      {
+        "src": "src/images/manif.png",
+        "sizes": "192x192",
+        "type": "img/png"
+      },
+      {
+        "src": "src/images/manif.png",
+        "sizes": "512x512",
+        "background_color" : "#4a3429",
+        "type": "img/png"
+      }
+    ]
+  }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="512x512" href="src/img/favicon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="src/img/favicon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Калькулятор деревянных ящиков</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <header>
+        <h1><img src="./src/img/logo.png"></img>Калькулятор деревянных ящиков</h1>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h2>Каталог <div class="underline"><span>
+            </span></div></h2>
+            <p>Выберите изделия:</p>
+            <ul>
+                <li><a href="#">У32</a></li>
+                <li><a href="#">УТ56</a></li>
+                <li><a href="#">УТ61</a></li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <h2>Калькулятор деревянных ящиков</h2>
+            <p>Какие требуются размеры?</p>
+            <form id="boxCalculator">
+                <label for="length">Длина</label>
+                <input type="number" id="length" placeholder="Введите длину" required>
+                <label for="width">Ширина</label>
+                <input type="number" id="width" placeholder="Введите ширину" required>
+                <label for="height">Высота</label>
+                <input type="number" id="height" placeholder="Введите высоту" required>
+                <button id="calculateButton" type="submit">Вычислить</button>
+            </form>
+
+            <div class="steps">
+                <div id="step1" class="step active"></div>
+                <div id="step2" class="step"></div>
+            </div>
+    
+            <div id="result" class="result"></div>
+        </div>
+
+    </div>
+    <script src="src/script.js"></script>
+</body>
+</html>
