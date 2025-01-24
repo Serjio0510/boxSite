@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let resultHTML = ""; // Переменная для хранения HTML результата
 
     // Логика вычислений
-      if (selectedBox === "У32") {
+      if (selectedBox === "Ящик У32") {
         // Расчёты для У32
         const plotnostFanery = 650;
         const plotnostDereva = 540;
