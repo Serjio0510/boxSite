@@ -97,14 +97,44 @@ document.addEventListener("DOMContentLoaded", function () {
         <p>Торцевые стенки: <strong>${TorcevayaStenka.toFixed(0)}</strong> кг</p>
         <p>Крышка: <strong>${Krushka.toFixed(0)}</strong> кг</p>
         <p>Общий вес: <strong>${obshchiyResult.toFixed(0)}</strong> кг</p>`;
-    } else if (selectedBox === "УТ56") {
-      // Пример расчётов для УТ56
-      const result = length + width + height;
-      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(0)}</strong></p>`;
-    } else if (selectedBox === "УТ61") {
-      // Пример расчётов для УТ61
-      const result = length * width * height;
-      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(0)}</strong></p>`;
+    } else if (selectedBox === "Брус 100x100 м3") {
+      // Расчёты для Брус 100x100 м3
+      const plotnostDereva = 540;
+      const brus1 = (plotnostDereva * (length / 1000) * 0.1 * 0.1 * 3) +
+                    (plotnostDereva * (width / 1000) * 0.1 * 0.1 * 3);
+      const result = (brus1/plotnostDereva);
+      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
+    } else if (selectedBox === "Брус 30x70 м3") {
+      // Расчёты для Брус 30x70 м3
+      const plotnostDereva = 540;
+      const brusObshch1 = plotnostDereva * ((height / 1000) - 0.17) * 0.03 * 0.07 * 2 +
+                          plotnostDereva * (length / 1000) * 0.03 * 0.07 * 2;
+      const brusObshch2 = plotnostDereva * ((height / 1000) - 0.17) * 0.03 * 0.07 * 2 +
+                          plotnostDereva * ((width / 1000) - 0.06) * 0.03 * 0.07 * 2;
+      const brusObshch3 = plotnostDereva * ((width / 1000) - 0.06) * 0.03 * 0.07 * 2 +
+                          plotnostDereva * ((length / 1000) - 0.072) * 0.03 * 0.07 * 2;
+      const result = (brusObshch1+brusObshch2+brusObshch3)/plotnostDereva;
+      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
+    } else if (selectedBox === "ОСБ м3 S=9") {
+      // Расчёты для ОСБ м3 S=9
+      const tolshchinaSten = 0.009;
+      const plotnostFanery = 650;
+      const fanera2 = plotnostFanery * ((height / 1000) + 0.118) * (length / 1000) * tolshchinaSten;
+      const fanera3 = plotnostFanery * ((height / 1000) + 0.018) * tolshchinaSten * (width / 1000);
+      const fanera4 = plotnostFanery * (length / 1000) * (width / 1000) * tolshchinaSten;
+      const result = (fanera2+fanera3+fanera4)/plotnostFanery;
+      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
+    } else if (selectedBox === "ОСБ м3 S=18") {
+      // Расчёты для ОСБ м3 S=18
+      const O6 = 0.018;
+      const plotnostFanery = 650;
+      const fanera1 = plotnostFanery * (length / 1000) * (width / 1000) * O6;
+      const result = (fanera1/plotnostFanery);
+      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
+    } else if (selectedBox === "Бумага БУБ") {
+      // Расчёты для Бумага БУБ
+      const result = ((((length*width)*2)/1000)+(((length*height)*2)/1000)+(((width*height)*2)/1000))/1000
+      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
     }
 
     // Сохраняем результат для выбранного изделия
