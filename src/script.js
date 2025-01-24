@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Сохраняем результат
-      results[selectedBox] = result.toFixed(2);
+      results[selectedBox] = result.toFixed(0);
   
       // Показываем результат
       resultDiv.innerHTML = `<strong>Результат вычислений для ${selectedBox}:</strong>
