@@ -102,12 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       resultHTML = `
         <strong>Результат вычислений для ${selectedBox}:</strong>
-        <p>Брус 100x100 м<sup>3</sup>: <strong>${brus100x100.toFixed(4)}</strong></p>
-        <p>Брус 30x70 м<sup>3</sup>: <strong>${brus30x70.toFixed(4)}</strong></p>
-        <p>ОСБ м<sup>3</sup> S=9: <strong>${osbS9.toFixed(4)}</strong></p>
-        <p>ОСБ м<sup>3</sup> S=18: <strong>${osbS18.toFixed(4)}</strong></p>
-        <p>Общий вес: <strong>${obshchiyResult.toFixed(0)}</strong></p>
-        <p>Бумага БУБ: <strong>${bumaga.toFixed(4)}</strong></p>`;
+        <p>Брус 100x100: <strong>${brus100x100.toFixed(4)}</strong> м<sup>3</sup></p>
+        <p>Брус 30x70: <strong>${brus30x70.toFixed(4)}</strong> м<sup>3</sup></p>
+        <p>ОСБ S=9: <strong>${osbS9.toFixed(4)}</strong> м<sup>3</sup></p>
+        <p>ОСБ S=18: <strong>${osbS18.toFixed(4)}</strong> м<sup>3</sup></p>
+        <p>Общий вес: <strong>${obshchiyResult.toFixed(0)}</strong> кг</p>
+        <p>Бумага БУБ: <strong>${bumaga.toFixed(4)}</strong> м<sup>2</sup></p>`;
         
     } 
 
