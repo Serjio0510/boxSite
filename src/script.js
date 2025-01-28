@@ -89,53 +89,27 @@ document.addEventListener("DOMContentLoaded", function () {
   
         // Общий результат
         const obshchiyResult = Dno + BokovayaStenka + TorcevayaStenka + Krushka;
+        // Расчёты для Брус 100x100 м3
+        const brus100x100 = (brus1/plotnostDereva);
+        // Расчёты для Брус 30x70 м3
+        const brus30x70 = (brusObshch1+brusObshch2+brusObshch3)/plotnostDereva;
+        // Расчёты для ОСБ м3 S=9
+        const osbS9 = (fanera2+fanera3+fanera4)/plotnostFanery;
+        // Расчёты для ОСБ м3 S=18
+        const osbS18 = (fanera1/plotnostFanery);
+        // Расчёты для Бумага БУБ
+        const bumaga = ((((length*width)*2)/1000)+(((length*height)*2)/1000)+(((width*height)*2)/1000))/1000;
 
       resultHTML = `
         <strong>Результат вычислений для ${selectedBox}:</strong>
-        <p>Дно: <strong>${Dno.toFixed(0)}</strong> кг</p>
-        <p>Боковые стенки: <strong>${BokovayaStenka.toFixed(0)}</strong> кг</p>
-        <p>Торцевые стенки: <strong>${TorcevayaStenka.toFixed(0)}</strong> кг</p>
-        <p>Крышка: <strong>${Krushka.toFixed(0)}</strong> кг</p>
-        <p>Общий вес: <strong>${obshchiyResult.toFixed(0)}</strong> кг</p>`;
-    } else if (selectedBox === "Брус 100x100 м<sup>3</sup>") {
-      // Расчёты для Брус 100x100 м3
-      const plotnostDereva = 540;
-      const brus1 = (plotnostDereva * (length / 1000) * 0.1 * 0.1 * 3) +
-                    (plotnostDereva * (width / 1000) * 0.1 * 0.1 * 3);
-      const result = (brus1/plotnostDereva);
-      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
-    } else if (selectedBox === "Брус 30x70 м<sup>3</sup>") {
-      // Расчёты для Брус 30x70 м3
-      const plotnostDereva = 540;
-      const brusObshch1 = plotnostDereva * ((height / 1000) - 0.17) * 0.03 * 0.07 * 2 +
-                          plotnostDereva * (length / 1000) * 0.03 * 0.07 * 2;
-      const brusObshch2 = plotnostDereva * ((height / 1000) - 0.17) * 0.03 * 0.07 * 2 +
-                          plotnostDereva * ((width / 1000) - 0.06) * 0.03 * 0.07 * 2;
-      const brusObshch3 = plotnostDereva * ((width / 1000) - 0.06) * 0.03 * 0.07 * 2 +
-                          plotnostDereva * ((length / 1000) - 0.072) * 0.03 * 0.07 * 2;
-      const result = (brusObshch1+brusObshch2+brusObshch3)/plotnostDereva;
-      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
-    } else if (selectedBox === "ОСБ м<sup>3</sup> S=9") {
-      // Расчёты для ОСБ м3 S=9
-      const tolshchinaSten = 0.009;
-      const plotnostFanery = 650;
-      const fanera2 = plotnostFanery * ((height / 1000) + 0.118) * (length / 1000) * tolshchinaSten;
-      const fanera3 = plotnostFanery * ((height / 1000) + 0.018) * tolshchinaSten * (width / 1000);
-      const fanera4 = plotnostFanery * (length / 1000) * (width / 1000) * tolshchinaSten;
-      const result = (fanera2+fanera3+fanera4)/plotnostFanery;
-      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
-    } else if (selectedBox === "ОСБ м<sup>3</sup> S=18") {
-      // Расчёты для ОСБ м3 S=18
-      const O6 = 0.018;
-      const plotnostFanery = 650;
-      const fanera1 = plotnostFanery * (length / 1000) * (width / 1000) * O6;
-      const result = (fanera1/plotnostFanery);
-      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
-    } else if (selectedBox === "Бумага БУБ") {
-      // Расчёты для Бумага БУБ
-      const result = ((((length*width)*2)/1000)+(((length*height)*2)/1000)+(((width*height)*2)/1000))/1000
-      resultHTML = `<p>Результат для ${selectedBox}: <strong>${result.toFixed(4)}</strong></p>`;
-    }
+        <p>Брус 100x100 м<sup>3</sup>: <strong>${brus100x100.toFixed(4)}</strong></p>
+        <p>Брус 30x70 м<sup>3</sup>: <strong>${brus30x70.toFixed(4)}</strong></p>
+        <p>ОСБ м<sup>3</sup> S=9: <strong>${osbS9.toFixed(4)}</strong></p>
+        <p>ОСБ м<sup>3</sup> S=18: <strong>${osbS18.toFixed(4)}</strong></p>
+        <p>Общий вес: <strong>${obshchiyResult.toFixed(0)}</strong></p>
+        <p>Бумага БУБ: <strong>${bumaga.toFixed(4)}</strong></p>`;
+        
+    } 
 
     // Сохраняем результат для выбранного изделия
     results[selectedBox] = resultHTML;
