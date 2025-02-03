@@ -6,15 +6,15 @@
     "background_color" : "#4a3429",
     "icons": [
       {
-        "src": "src/images/manif.png",
+        "src": "src/img/manif.png",
         "sizes": "192x192",
-        "type": "img/png"
+        "type": "image/png"
       },
       {
-        "src": "src/images/manif.png",
+        "src": "src/img/manif.png",
         "sizes": "512x512",
         "background_color" : "#4a3429",
-        "type": "img/png"
+        "type": "image/png"
       }
     ]
   }
