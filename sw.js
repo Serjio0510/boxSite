@@ -9,7 +9,7 @@ self.addEventListener('install', (event) => {
           'src/img/favicon.png',
           'src/img/fon_page.png',
           'src/img/fon.png',
-          'src/img/logo.png',
+          'src/img/logo.png'
         ]);
       })
     );
