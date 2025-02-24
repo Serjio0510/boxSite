@@ -86,6 +86,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const brusObshch3 = plotnostDereva * ((width / 1000) - 0.06) * 0.03 * 0.07 * 2 +
                             plotnostDereva * ((length / 1000) - 0.072) * 0.03 * 0.07 * 2;
         const Krushka = fanera4 + brusObshch3;
+        // Шуруп 35
+        const bok2sht = (((((length-78)/100)-1)*2)+((((height+127)-288)/100)*2))*2;
+        const tor2sht = ((((width)/100)*2)+(((height-170)/100)*2))*2;
+        const krush = ((((width-158)/100)*2)+(((height-18)/100)*2))*2;
+        // Шуруп 55
+        const bok2sht55 = (((length/100)*2)+((height/100)*2))*2;
+        const tor2sht55 = (((width/100)*2)+((height/100)*2))*2;
+        const krush55 = ((((width-158)/100)*2)+(((height-18)/100)*2))*2;
+        // Гвозди
+        const gvozd = 18;
   
         // Общий результат
         const obshchiyResult = Dno + BokovayaStenka + TorcevayaStenka + Krushka;
@@ -99,6 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const osbS18 = (fanera1/plotnostFanery);
         // Расчёты для Бумага БУБ
         const bumaga = ((((length*width)*2)/1000)+(((length*height)*2)/1000)+(((width*height)*2)/1000))/1000;
+        // Расчёты для Шурупа 3.5, 35шт
+        const shurup35 = bok2sht + tor2sht + krush;
+        // Расчёты для Шурупа 4, 55шт
+        const shurup55 = bok2sht55 + tor2sht55 + krush55;
+        // Расчёты для Гвоздей 5, 150шт
+        const Gvozdi = gvozd;
 
       resultHTML = `
         <strong>Результат вычислений для ${selectedBox}:</strong>
@@ -107,7 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <p>ОСБ S=9: <strong>${osbS9.toFixed(4)}</strong> м<sup>3</sup></p>
         <p>ОСБ S=18: <strong>${osbS18.toFixed(4)}</strong> м<sup>3</sup></p>
         <p>Общий вес: <strong>${obshchiyResult.toFixed(0)}</strong> кг</p>
-        <p>Бумага БУБ: <strong>${bumaga.toFixed(4)}</strong> м<sup>2</sup></p>`;
+        <p>Бумага БУБ: <strong>${bumaga.toFixed(4)}</strong> м<sup>2</sup></p>
+        <p>Шуруп 3,5х35: <strong>${shurup35.toFixed(0)}</strong> шт</p>
+        <p>Шуруп 4х55: <strong>${shurup55.toFixed(0)}</strong> шт</p>
+        <p>Гвоздь 5х150: <strong>${Gvozdi.toFixed(0)}</strong> шт</p>`;
         
     } 
 
