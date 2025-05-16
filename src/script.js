@@ -71,12 +71,14 @@ document.addEventListener("DOMContentLoaded", function () {
   
         // Боковые стенки
         const fanera2 = plotnostFanery * ((height / 1000) + 0.118) * (length / 1000) * tolshchinaSten;
+        const DveFaneriBok = fanera2*2;
         const brusObshch1 = plotnostDereva * ((height / 1000) - 0.17) * 0.03 * 0.07 * 2 +
                             plotnostDereva * (length / 1000) * 0.03 * 0.07 * 2;
         const BokovayaStenka = (fanera2 + brusObshch1) * ColichestvoSten;
   
         // Торцевые стенки
         const fanera3 = plotnostFanery * ((height / 1000) + 0.018) * tolshchinaSten * (width / 1000);
+        const DveFaneriTorec = fanera3*2;
         const brusObshch2 = plotnostDereva * ((height / 1000) - 0.17) * 0.03 * 0.07 * 2 +
                             plotnostDereva * ((width / 1000) - 0.06) * 0.03 * 0.07 * 2;
         const TorcevayaStenka = (fanera3 + brusObshch2) * ColichestvoSten;
@@ -103,10 +105,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const brus100x100 = (brus1/plotnostDereva);
         // Расчёты для Брус 30x70 м3
         const brus30x70 = (brusObshch1+brusObshch2+brusObshch3)/plotnostDereva;
-        // Расчёты для ОСБ м3 S=9
-        const osbS9 = (fanera2+fanera3+fanera4)/plotnostFanery;
+        // Расчёты для ОСБ м3 S=9 и преобразование в м2
+        const osbThicknessS9 = 0.009; // толщина осб
+        const osbS9Area = (DveFaneriBok + DveFaneriTorec + fanera4) / (plotnostFanery * osbThicknessS9);
         // Расчёты для ОСБ м3 S=18
-        const osbS18 = (fanera1/plotnostFanery);
+        const osbThicknessS18 = 0.018; // thickness in meters
+        const osbS18Area = fanera1 / (plotnostFanery * osbThicknessS18);
         // Расчёты для Бумага БУБ
         const bumaga = ((((length*width)*2)/1000)+(((length*height)*2)/1000)+(((width*height)*2)/1000))/1000;
         // Расчёты для Шурупа 3.5, 35шт
@@ -120,8 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <strong>Результат вычислений для ${selectedBox}:</strong>
         <p>Брус 100x100: <strong>${brus100x100.toFixed(4)}</strong> м<sup>3</sup></p>
         <p>Брус 30x70: <strong>${brus30x70.toFixed(4)}</strong> м<sup>3</sup></p>
-        <p>ОСБ S=9: <strong>${osbS9.toFixed(4)}</strong> м<sup>3</sup></p>
-        <p>ОСБ S=18: <strong>${osbS18.toFixed(4)}</strong> м<sup>3</sup></p>
+        <p>OSB-4 S=9: <strong>${osbS9Area.toFixed(4)}</strong> м<sup>2</sup></p>
+        <p>OSB-4 S=18: <strong>${osbS18Area.toFixed(4)}</strong> м<sup>2</sup></p>
         <p>Общий вес: <strong>${obshchiyResult.toFixed(0)}</strong> кг</p>
         <p>Бумага БУБ: <strong>${bumaga.toFixed(4)}</strong> м<sup>2</sup></p>
         <p>Шуруп 3,5х35: <strong>${shurup35.toFixed(0)}</strong> шт</p>
